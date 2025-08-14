@@ -2,9 +2,12 @@
 import streamlit as st
 import joblib
 import numpy as np
+import os
 
 # ===================== Load the Model =====================
-model = joblib.load(r"C:\Users\HP\vscode\kmeans_model.pkl")
+# استخدام المسار النسبي بدلاً من المسار المطلق
+model_path = os.path.join(os.path.dirname(__file__), "kmeans_model.pkl")
+model = joblib.load(model_path)
 
 # ===================== Custom Feature Names =====================
 feature_names = ["Fresh", "Milk", "Grocery", "Frozen", "Detergents_Paper", "Delicassen"]
@@ -72,4 +75,5 @@ st.sidebar.write("""
 - Deployed with a lovely pink theme 🌸
 - Change the values and see the magic happen 💫
 """)
+
 
